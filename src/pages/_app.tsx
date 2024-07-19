@@ -3,14 +3,17 @@ import { AppProps } from "next/app";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import CookieConsent from "react-cookie-consent";
 import { DiscogsProvider } from "@/hooks/useDiscogProvider";
+import MainLayout from "@/components/layouts/MainLayout";
 
 // import "../style/global.css";
 
 const App = ({ Component, pageProps }: AppProps) => (
   <ChakraProvider>
     <DiscogsProvider>
-    <CSSReset />
-            <Component {...pageProps} />
+      <CSSReset />
+      <MainLayout>
+        <Component {...pageProps} />
+        </MainLayout>
             <CookieConsent
               location="bottom"
               buttonText="I Understand"

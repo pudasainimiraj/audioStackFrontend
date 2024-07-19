@@ -9,30 +9,27 @@ export const DiscogsProvider = (props: any) => {
   const [loading, setLoading] = useState(false);
   const [type, setType] = useState("artist");
 
-    useEffect(() => {
-        
-    fetchData("LAX"); 
+  useEffect(() => {
+    fetchData("Metallica");  // Initial fetch
   }, []);
 
-  const fetchData = async (search:any) => {
+  const fetchData = async (search: any, page = 1) => {  // Added `page` parameter with default value
     try {
-        setLoading(true);
-        console.log(process.env.REACT_APP_API_KEY);
-      const response = await fetch(
-        `https://api.discogs.com//database/search?q=${search}&key=${process.env.REACT_APP_API_KEY}&secret=${process.env.REACT_APP_API_SECRET}`
-      );
+      setLoading(true);
+      // Adjusted URL to include `per_page` and `page` parameters
+      const url = `https://api.discogs.com/database/search?q=${search}&type=${type}&key=${process.env.REACT_APP_API_KEY}&secret=${process.env.REACT_APP_API_SECRET}&per_page=5&page=${page}`;
+      const response = await fetch(url);
       const data = await response.json();
       setLoading(false);
-      const pagination = data.pagination;
-      console.log("p", pagination);
-      const results = data.results;
-      console.log("resultsperpage", results);
 
-      setResults(results);
-      setPagination(pagination);
-      setItem(item);
-    } catch (err) {
-      alert(err);
+      console.log("Pagination:", data.pagination);  // Debugging output
+      console.log("Results per page:", data.results);
+
+      setResults(data.results);
+      setPagination(data.pagination);
+    } catch (err:any) {
+      console.error("Fetching error:", err);
+      alert("Failed to fetch data: " + err.message);
     }
   };
 

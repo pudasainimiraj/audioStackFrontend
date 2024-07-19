@@ -4,14 +4,12 @@ import { DiscogsListContext } from '@/hooks/useDiscogProvider';  // Adjust the i
 
 interface Artist {
   id: number;
-  name: string;
+  title: string;
   realname?: string;
-  profile: string;
   resource_url: string;
   uri: string;
-  releases_url: string;
-  images: Array<{ uri: string; width: number; height: number }>;
-  urls: string[];
+  cover_image: string;
+  thumb: string;
 }
 
 const ArtistsList = () => {
@@ -25,9 +23,9 @@ const ArtistsList = () => {
       {results.map((artist: Artist) => (
         <li key={artist.id}>
           <GenericCard
-            title={artist.name}
-            description={artist.profile}
-            imageUrl={artist.images && artist.images.length > 0 ? artist.images[0].uri : undefined}
+            title={artist.title}
+            description={`Explore more about ${artist.title} on Discogs`}
+            imageUrl={artist.cover_image || artist.thumb}  // Use cover_image or thumb as fallback
           />
         </li>
       ))}
