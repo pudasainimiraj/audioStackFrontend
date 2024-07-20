@@ -28,7 +28,7 @@ const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
   // };
 
   return (
-    <Box position="relative" top={0} width="100%" zIndex={1} height={20}>
+    <Box position="fixed" top={0} width="100%" zIndex={1} height={20}>
       <Flex
         ml={{ base: 0, md: 60 }}
         px={{ base: 4, md: 200 }}
@@ -38,7 +38,7 @@ const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
         borderBottomWidth="1px"
         borderBottomColor={useColorModeValue("gray.200", "gray.700")}
         justifyContent="space-between"
-        position="relative"
+        // position="relative"
       >
         <CustomIconButton
           ariaLabel={"Open Menu"}

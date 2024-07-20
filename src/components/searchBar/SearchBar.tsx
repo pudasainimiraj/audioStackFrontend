@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent, ChangeEvent, useEffect } from "react";
+import React, { useState, useContext, KeyboardEvent, ChangeEvent } from 'react';
 import {
   InputGroup,
   InputLeftElement,
@@ -7,87 +7,31 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { FiSearch, FiX } from "react-icons/fi";
-import {
-  CustomIconButton,
-  CustomIconButtonWithTooltip,
-} from "@/components/buttons/buttons";
-// import { useSearch } from "@frontend/src/results/context/SearchProvider";
+import { CustomIconButton } from "@/components/buttons/buttons";
+import { DiscogsListContext } from '@/hooks/useDiscogProvider'; // Adjust the import path as necessary
 
-interface SearchBarProps {
-  // isDisabled: boolean;
-}
+const SearchBar: React.FC = () => {
+  const { fetchData, loading } = useContext(DiscogsListContext);
+  const [inputValue, setInputValue] = useState("");
 
-const SearchBar: React.FC<SearchBarProps> = () => {
-  // const router = useRouter();
-  // // const { searchQuery, setSearchQuery, setSearchTrigger, setError } =
-  // //   useSearch();
-  // const [, setErrorMsg] = useState<string | null>(null);
-  const [inputValue, setInputValue] = useState("searchQuery");
+  const handleSearch = async (event: KeyboardEvent<HTMLTextAreaElement>): void => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const cleanQuery = inputValue.trim();
+      if (cleanQuery) {
+        await fetchData(cleanQuery);  // Await the async operation
+        setInputValue("");            // Clear the input after the search is done
+      }
+    }
+  };
 
-  // // const updateSearchTokenCount = async () => {
-  // //   try {
-  // //     const response = await salamanderApi(
-  // //       "PUT",
-  // //       "/user/decrement-search-token-count",
-  // //       // @ts-expect-error session was modified
-  // //       session?.userId
-  // //     );
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+    setInputValue(event.target.value); // Update local state
+  };
 
-  // //     setSearchTokenCount(response.data.searchTokenCount);
-  // //   } catch (error: any) {
-  // //     setErrorMsg(error.message);
-  // //   }
-  // // };
-
-  // useEffect(() => {
-  //   setInputValue("searchQuery");
-  // }, []);
-
-  // const handleSearch = (event: KeyboardEvent<HTMLTextAreaElement>): void => {
-  //   if (event.key === "Enter") {
-  //     event.preventDefault();
-  //     if (!inputValue) {
-  //       setErrorMsg("Please input something.");
-  //       return;
-  //     }
-  //     const cleanQuery = inputValue.trim();
-
-  //     if (cleanQuery === "") {
-  //       setErrorMsg("Please input something.");
-  //       return;
-  //     }
-  //     router.push(`/results?searchQuery=${cleanQuery}`);
-  //   }
-  // };
-
-  // const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
-  //   setInputValue(event.target.value); // Update local state
-  //   setErrorMsg(null); // Clear error message on change
-  // };
-
-  // const clearSearch = (): void => {
-  //   setInputValue("");
-  //   setErrorMsg(null);
-  // };
-
-  // // useEffect(() => {
-  // //   const getSearchTokenCount = async () => {
-  // //     try {
-  // //       const response = await salamanderApi(
-  // //         "GET",
-  // //         "/user/get-search-token-count",
-  // //         // @ts-expect-error session was modified
-  // //         session?.userId
-  // //       );
-
-  // //       setSearchTokenCount(response.data.searchTokenCount);
-  // //     } catch (error: any) {
-  // //       setErrorMsg(error.message);
-  // //     }
-  // //   };
-
-  // //   getSearchTokenCount();
-  // // });
+  const clearSearch = (): void => {
+    setInputValue("");
+  };
 
   return (
     <Box>
@@ -102,8 +46,8 @@ const SearchBar: React.FC<SearchBarProps> = () => {
           paddingLeft={10}
           width="100%"
           value={inputValue}
-          // onChange={handleChange}
-          // onKeyDown={handleSearch}
+          onChange={handleChange}
+          onKeyDown={handleSearch}
           aria-label="Search" // for accessibility
         />
         <InputRightElement width="4.5rem">
@@ -111,20 +55,12 @@ const SearchBar: React.FC<SearchBarProps> = () => {
             <CustomIconButton
               ariaLabel="Clear search"
               icon={<FiX />}
-              // onClick={clearSearch}
+              onClick={clearSearch}
             />
           )}
-          {/* <CustomIconButtonWithTooltip
-            ariaLabel={
-              searchTokenCount > 0
-                ? `Search tokens: ${searchTokenCount}`
-                : `Search tokens: 0. Please contact help@zolaanalytics.com for more tokens, or wait until next month`
-            }
-            icon={<FiTarget />}
-            placement={"bottom"}
-          /> */}
         </InputRightElement>
       </InputGroup>
+      {loading && <div>Loading...</div>}
     </Box>
   );
 };
