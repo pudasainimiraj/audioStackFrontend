@@ -30,3 +30,10 @@ export default withBundleAnalyzer({
     REACT_APP_API_SECRET: process.env.REACT_APP_API_SECRET,
   },
 });
+
+const nextConfig = {
+  output: "export",
+  reactStrictMode: true,
+};
+
+module.exports = withBundleAnalyzer(nextConfig);
