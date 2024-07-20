@@ -36,9 +36,9 @@ type LinkItemProps = {
  */
 const LinkItemsNames = {
   Home: "Home",
-  Editor: "Editor",
-  Browse: "Browse",
-  Saved: "Saved",
+  Editor: "Library",
+  Browse: "Database",
+  Saved: "Saved Releases",
   Settings: "Settings",
 };
 
@@ -79,7 +79,7 @@ const LinkItems: Array<LinkItemProps> = [
  * Type for the SidebarProps
  */
 
-const RenderNavItem = (link: LinkItemProps, isDisabled = false) => {
+const RenderNavItem = (link: LinkItemProps, isDisabled = true) => {
   const router = useRouter();
   return (
     <NavItem
@@ -87,7 +87,7 @@ const RenderNavItem = (link: LinkItemProps, isDisabled = false) => {
       icon={link.icon}
       linkTo={link.linkTo}
       isActive={router.pathname === `/${link.linkTo}`}
-      isDisabled={isDisabled}
+      isDisabled={true}
     >
       {link.name}
     </NavItem>
@@ -121,7 +121,12 @@ const Sidebar = ({ onClose , isReadOnly = false }): React.JSX.Element => (
       letterSpacing="tight"
       zIndex={200}
     >
-      <Image boxSize="120px" src="/logo.png" alt="user-logo" />
+      <Image 
+        boxSize="120px" 
+        src="https://via.placeholder.com/150" 
+        alt="user-logo" 
+        borderRadius="full" // This makes the image circular
+      />
       <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
     </Flex>
     {LinkItems.map((link) => RenderNavItem(link, isReadOnly))}

@@ -38,6 +38,7 @@
     "react-cookie-consent": "^8.0.1",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
+    "react-router-dom": "^6.25.1",
     "react-use": "^17.4.0",
     "reactflow": "^11.7.2",
     "styled-jsx-plugin-postcss": "^4.0.1",

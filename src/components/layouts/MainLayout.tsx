@@ -13,14 +13,12 @@ const MainLayout = ({ children, isReadOnly = false }) => {
   return (
     <Box>
       <Header onOpen={() => console.log('Opened')} isReadOnly={isReadOnly} />
-      <Box
-        display={{ base: "none", md: "block" }}
+       <Box
         position="fixed"
         left={0}
         top={0}
-        bottom={0}
-        width="60px"
-        zIndex={10}
+        right={0}
+        zIndex={20} // Ensures the header is above other content
       >
         <Sidebar onClose={() => onClose} isReadOnly={isReadOnly} />
       </Box>
