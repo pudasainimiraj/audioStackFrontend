@@ -26,6 +26,8 @@ const ReleaseDetail = () => {
     }
   }, [releaseId]);
 
+  console.log(process.env.REACT_APP_API_KEY);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!releaseData) return <p>No release data available.</p>;
