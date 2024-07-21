@@ -14,7 +14,7 @@ const ReleaseDetails = ({ releaseData }) => {
   };
 
   return (
-    <Box padding="10" maxWidth={{ base: "90vw", md: "800px" }} margin="auto" bg={bgColor} boxShadow="lg" borderRadius="md">
+    <Box padding="10" maxWidth={{ base: "90vw", md: "800px" }} margin="auto" marginTop={10} bg={bgColor} boxShadow="lg" borderRadius="md">
       <Button colorScheme="teal" size="sm" onClick={() => router.back()} margin="4" leftIcon={<ArrowBackIcon />}>
         Back
       </Button>
