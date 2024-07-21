@@ -15,9 +15,7 @@ export default withBundleAnalyzer({
   poweredByHeader: false,
   trailingSlash: false,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  images: {
-    domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN],
-  },
+  images: { domains: [`${process.env.NEXT_PUBLIC_BASE_URL}`] },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
