@@ -11,14 +11,14 @@ const ReleaseDetails: React.FC<ReleaseDetailsProps> = ({ title, tracks, ownedBy 
       <Text fontSize="lg" textAlign="center" color="gray.600" my="2">
         Owned by {ownedBy} people on Discogs
       </Text>
-      {tracks && tracks.length > 0 && (
+      {tracks && tracks?.length > 0 && (
         <Box>
           <Heading as="h2" size="lg" textAlign="center" mt="5" mb="2">Track listing</Heading>
           <List spacing={3}>
             {tracks.map((track, index) => (
               <ListItem key={index} paddingX="6" paddingY="2" borderBottom="1px" borderColor="gray.200">
-                <Text fontSize="md" fontWeight="bold">{track.title} - {track.duration}</Text>
-                <Text fontSize="sm" color="gray.500">Artists: {track.artists.map(artist => artist.name).join(", ")}</Text>
+                <Text fontSize="md" fontWeight="bold">{track?.title} - {track?.duration}</Text>
+                <Text fontSize="sm" color="gray.500">Artists: {track?.artists?.map(artist => artist.name).join(", ")}</Text>
               </ListItem>
             ))}
           </List>
