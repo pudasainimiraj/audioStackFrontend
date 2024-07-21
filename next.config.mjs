@@ -14,7 +14,8 @@ export default withBundleAnalyzer({
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  basePath:'/audioStackFrontend',
+  assetPrefix: '/audioStackFrontend',
   images: { domains: [`${process.env.NEXT_PUBLIC_BASE_URL}`] },
   webpack: (config) => {
     config.resolve.alias = {
