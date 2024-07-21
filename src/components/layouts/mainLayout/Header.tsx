@@ -5,7 +5,6 @@ import {
   FlexProps,
   HStack,
   Box,
-  Button,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 
@@ -14,7 +13,6 @@ import { FiMenu } from "react-icons/fi";
 import SearchBar from "@/components/searchBar/SearchBar";
 import {
   CustomIconButton,
-  commonButtonProps,
 } from "@/components/buttons/buttons";
 
 type HeaderProps = FlexProps & {
