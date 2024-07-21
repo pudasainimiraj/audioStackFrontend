@@ -83,7 +83,7 @@ type SidebarProps = {
   isReadOnly?: boolean;
 };
 
-const RenderNavItem = (link: LinkItemProps, isDisabled = true) => {
+const RenderNavItem = (link: LinkItemProps) => {
   const router = useRouter();
   return (
     <NavItem
@@ -102,7 +102,7 @@ const RenderNavItem = (link: LinkItemProps, isDisabled = true) => {
  *@component Sidebar component
  * @returns {ReactElement} Sidebar component
  */
-const Sidebar: React.FC<SidebarProps>  = ({ onClose, isReadOnly = false }): React.JSX.Element => (
+const Sidebar: React.FC<SidebarProps>  = ({ onClose}): React.JSX.Element => (
   <Box
     transition="3s ease"
     bg={useColorModeValue("white", "gray.900")}
@@ -133,7 +133,7 @@ const Sidebar: React.FC<SidebarProps>  = ({ onClose, isReadOnly = false }): Reac
       />
       <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
     </Flex>
-    {LinkItems.map((link) => RenderNavItem(link, isReadOnly))}
+    {LinkItems.map((link) => RenderNavItem(link))}
   </Box>
 );
 

@@ -16,10 +16,11 @@ const ArtistsList = () => {
     );
   }
 
-  const { results, loading, type, pagination, fetchData } = context;
+  const { results, loading, type, pagination } = context;
 
   const handleCardClick = (artistId: number) => {
     // Navigate or open modal logic here
+    console.log(artistId);
   };
 
   const handlePrevPage = () => {

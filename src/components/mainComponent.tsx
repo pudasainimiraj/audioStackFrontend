@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import ArtistsList from "./queryListComponent";
-import MainLayout from "./layouts/MainLayout";
+// import MainLayout from "./layouts/MainLayout";
 
 const Landing = () => {
   const queryClient = new QueryClient();

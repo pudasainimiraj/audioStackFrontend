@@ -9,7 +9,7 @@ import Header from "@/components/layouts/mainLayout/Header";
  * @returns {ReactElement} MainLayout component
  */
 const MainLayout = ({ children, isReadOnly = false }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   return (
     <Box>
       <Header onOpen={() => console.log("Opened")} isReadOnly={isReadOnly} />

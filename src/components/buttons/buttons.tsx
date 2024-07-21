@@ -11,7 +11,7 @@ import {
   //   Text,
   //   MenuList,
   //   Portal,
-  TooltipProps,
+  // TooltipProps,
 } from "@chakra-ui/react";
 
 type CustomIconButtonProps = ButtonProps & {
@@ -134,23 +134,23 @@ export const CustomButton: FC<CustomButtonProps> = ({
   </Button>
 );
 
-type CustomMenuButtonProps = ButtonProps & {
-  items: {
-    key: string;
-    value: string[];
-    onClick: () => void;
-    icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
-    isDisabled?: boolean;
-    tooltip?: string;
-    tooltipPlacement?: TooltipProps["placement"]; // Using the placement type from TooltipProps
-  }[];
-  ariaLabel: string;
-  text?: string;
-  icon?: React.ReactElement;
-  isIconButton?: boolean;
-  iconHasArrow?: boolean;
-  iconPlacement?: TooltipProps["placement"];
-};
+// type CustomMenuButtonProps = ButtonProps & {
+//   items: {
+//     key: string;
+//     value: string[];
+//     onClick: () => void;
+//     icon?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+//     isDisabled?: boolean;
+//     tooltip?: string;
+//     tooltipPlacement?: TooltipProps["placement"]; // Using the placement type from TooltipProps
+//   }[];
+//   ariaLabel: string;
+//   text?: string;
+//   icon?: React.ReactElement;
+//   isIconButton?: boolean;
+//   iconHasArrow?: boolean;
+//   iconPlacement?: TooltipProps["placement"];
+// };
 
 // export const CustomMenuButton: FC<CustomMenuButtonProps> = ({
 //   items,

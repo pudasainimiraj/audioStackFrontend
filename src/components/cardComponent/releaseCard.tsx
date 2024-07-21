@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, List, ListItem, Text, Image, Link, Button } from "@chakra-ui/react";
+import { Box, Heading, List, ListItem, Text, Button } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import router from "next/router";
 

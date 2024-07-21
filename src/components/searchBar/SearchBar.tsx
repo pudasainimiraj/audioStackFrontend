@@ -16,7 +16,7 @@ const SearchBar: React.FC = () => {
 
   const handleSearch = async (
     event: KeyboardEvent<HTMLTextAreaElement>
-  ): void => {
+  ) => {
     if (event.key === "Enter") {
       event.preventDefault();
       const cleanQuery = inputValue.trim();
