@@ -1,4 +1,4 @@
-
+// next.config.js updated without unsupported output property
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bundleAnalyzer from '@next/bundle-analyzer';
@@ -27,5 +27,4 @@ export default withBundleAnalyzer({
     REACT_APP_API_KEY: process.env.REACT_APP_API_KEY,
     REACT_APP_API_SECRET: process.env.REACT_APP_API_SECRET,
   },
-  output: 'export',
 });
