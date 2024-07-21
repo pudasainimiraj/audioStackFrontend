@@ -28,7 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env: # 
+    env:
+      NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
       REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
       REACT_APP_API_SECRET: ${{ secrets.REACT_APP_API_SECRET }}
     steps:
