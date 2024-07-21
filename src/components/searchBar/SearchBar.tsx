@@ -12,7 +12,7 @@ import { CustomIconButton } from "@/components/buttons/buttons";
 import { DiscogsListContext } from "@/hooks/useDiscogProvider"; // Ensure the path is correct
 
 const SearchBar: React.FC = () => {
-  const { fetchData, setSearchTerm, loading } = useContext(DiscogsListContext);
+  const { fetchData, setSearchTerm } = useContext(DiscogsListContext);
   const [inputValue, setInputValue] = useState("");
   const toast = useToast(); // For showing feedback to the user
 
