@@ -19,10 +19,10 @@ import {
 
 type HeaderProps = FlexProps & {
   onOpen: () => void;
-  isReadOnly: boolean;
+  // isReadOnly: boolean;
 };
 
-const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
+const Header = ({ onOpen }: HeaderProps) => {
   // const handleSignOut = () => {
   //   signOut({ callbackUrl: "/", redirect: true });
   // };
@@ -61,7 +61,7 @@ const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
           <HStack spacing={4}>
             {/* <NotificationButton isDisabled={isReadOnly} />
             <FAQModal isDisabled={isReadOnly} /> */}
-            {isReadOnly ? null : (
+            {/* {isReadOnly ? null : (
               <Button
                 fontSize="xl"
                 as="a"
@@ -70,8 +70,8 @@ const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
                 {...commonButtonProps}
               >
                 Sign out
-              </Button>
-            )}
+              </Button> */}
+            {/* )} */}
           </HStack>
         </Box>
       </Flex>

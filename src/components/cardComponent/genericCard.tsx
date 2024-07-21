@@ -29,6 +29,8 @@ const InfoCard: React.FC<any> = ({ artist }) => {
           src={artist.cover_image || artist.thumb || "https://via.placeholder.com/150"}
           alt={`Image for ${artist.title}`}
           objectFit="cover"
+          maxHeight="inherit"
+          maxWidth="inherit"
           width="100%"
           height="60%"
         />
