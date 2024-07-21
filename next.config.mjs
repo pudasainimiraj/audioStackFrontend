@@ -14,8 +14,9 @@ export default withBundleAnalyzer({
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
   images: {
-    domains: [process.env.NEXT_PUBLIC_BASE_URL],
+    domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN],
   },
   webpack: (config) => {
     config.resolve.alias = {
@@ -30,3 +31,7 @@ export default withBundleAnalyzer({
   },
   output:'export',
 });
+
+// module.exports = {
+//   basePath: '/audioStackFrontend',
+// }
