@@ -25,3 +25,7 @@ interface ReleaseDetailsProps {
   ownedBy: number;
   wantedBy: number; 
 }
+
+interface APIResponse {
+  releases: ReleaseData[];
+}
