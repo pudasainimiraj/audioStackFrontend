@@ -52,6 +52,8 @@ export const DiscogsProvider: React.FunctionComponent<DiscogsProviderProps> = (
     }
   };
 
+    console.log(process.env.REACT_APP_API_KEY);
+
   const value: DiscogsContextType = {
     results,
     setResults,
