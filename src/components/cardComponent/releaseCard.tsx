@@ -1,27 +1,50 @@
-import React from "react";
-import { Box, Heading, List, ListItem, Text, Button } from "@chakra-ui/react";
-import { ArrowBackIcon } from "@chakra-ui/icons";
-import router from "next/router";
+import React, { useState } from 'react';
+import { Box, Heading, List, ListItem, Text, Button, Icon, Flex } from '@chakra-ui/react';
+import { ArrowBackIcon, StarIcon, ViewIcon } from '@chakra-ui/icons';
+import router from 'next/router';
 
-const ReleaseDetails: React.FC<ReleaseDetailsProps> = ({ title, tracks, ownedBy }) => {
+const ReleaseDetails = ({ releaseData }) => {
+  const [visibleReleases, setVisibleReleases] = useState(5);
+
+  const loadMoreReleases = () => {
+    setVisibleReleases(prev => prev + 5);
+  };
+
   return (
     <Box padding="10" maxWidth="800px" paddingTop="20" margin="auto" bg="white" boxShadow="xl" borderRadius="lg">
-      <Button colorScheme="teal" size="sm" onClick={() => router.back()} margin="4" leftIcon={<ArrowBackIcon />} />
-      <Heading as="h1" size="xl" textAlign="center" marginTop="4">{title}</Heading>
-      <Text fontSize="lg" textAlign="center" color="gray.600" my="2">
-        Owned by {ownedBy} people on Discogs
-      </Text>
-      {tracks && tracks?.length > 0 && (
+      <Button colorScheme="teal" size="sm" onClick={() => router.back()} margin="4" leftIcon={<ArrowBackIcon />}>
+        Back
+      </Button>
+      {releaseData && releaseData.length > 0 && (
         <Box>
-          <Heading as="h2" size="lg" textAlign="center" mt="5" mb="2">Track listing</Heading>
+          <Heading as="h2" size="lg" textAlign="center" mt="5" mb="2">Track Listing</Heading>
           <List spacing={3}>
-            {tracks.map((track, index) => (
+            {releaseData.slice(0, visibleReleases).map((data, index) => (
               <ListItem key={index} paddingX="6" paddingY="2" borderBottom="1px" borderColor="gray.200">
-                <Text fontSize="md" fontWeight="bold">{track?.title} - {track?.duration}</Text>
-                <Text fontSize="sm" color="gray.500">Artists: {track?.artists?.map(artist => artist.name).join(", ")}</Text>
+                <Flex justifyContent="space-between" alignItems="center">
+                  <Box>
+                    <Text fontSize="md" fontWeight="bold">{data.title} - {data.duration}</Text>
+                    <Text fontSize="sm" color="gray.500">Artists: {data.artist}</Text>
+                  </Box>
+                  <Flex direction="column" alignItems="flex-end">
+                    <Box display="flex" alignItems="center">
+                      <Icon as={StarIcon} color="yellow.400" mr="2" />
+                      <Text fontSize="sm" color="gray.600">{data.stats.community.in_wantlist} want</Text>
+                    </Box>
+                    <Box display="flex" alignItems="center" mt="2">
+                      <Icon as={ViewIcon} color="green.500" mr="2" />
+                      <Text fontSize="sm" color="gray.600">{data.stats.community.in_collection} own</Text>
+                    </Box>
+                  </Flex>
+                </Flex>
               </ListItem>
             ))}
           </List>
+          {visibleReleases < releaseData.length && (
+            <Button colorScheme="teal" onClick={loadMoreReleases} mt="4">
+              Load More
+            </Button>
+          )}
         </Box>
       )}
     </Box>

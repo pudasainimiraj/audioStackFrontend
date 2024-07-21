@@ -16,7 +16,7 @@ const ReleaseDetail = () => {
       setLoading(true);
       axios.get<ReleaseData>(`https://api.discogs.com//artists/${releaseId}/releases`)
         .then(response => {
-          setReleaseData(response.data);
+          setReleaseData(response.data.releases);
           setLoading(false);
         })
         .catch(error => {
@@ -40,11 +40,10 @@ const ReleaseDetail = () => {
         <title>{releaseData ? releaseData.title : "Loading..."}</title>
       </Head>
       {releaseData && (
-        <ReleaseDetails
-          title={releaseData?.title}
-          tracks={releaseData?.tracklist}
-          ownedBy={releaseData?.community?.have}
-        />
+       <ReleaseDetails
+        releaseData={releaseData}
+/>
+
       )}
     </div>
   );

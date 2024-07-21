@@ -1,77 +1,54 @@
-import React, { useState, createContext, useEffect, ReactNode } from "react";
-import {
-  DiscogsContextType,
-  Artist,
-  Pagination,
-} from "@/types/IDiscogProviderTypes";
+import React, { useState, createContext, useEffect, useCallback } from "react";
 
-interface DiscogsProviderProps {
-  children?: ReactNode;
-}
+export const DiscogsListContext = createContext(undefined);
 
-export const DiscogsListContext = createContext<DiscogsContextType | undefined>(
-  undefined
-);
-
-export const DiscogsProvider: React.FunctionComponent<DiscogsProviderProps> = (
-  props
-) => {
-  const [item, setItem] = useState<Artist | null>(null);
-  const [results, setResults] = useState<Artist[]>([]);
-  const [pagination, setPagination] = useState<Pagination>({
+export const DiscogsProvider = ({ children }) => {
+  const [searchTerm, setSearchTerm] = useState('The Beatles');
+  const [results, setResults] = useState([]);
+  const [pagination, setPagination] = useState({
     page: 1,
     pages: 0,
     itemsPerPage: 5,
     totalItems: 0,
   });
-  const [loading, setLoading] = useState<boolean>(false);
-  const [type, setType] = useState<string>("artist");
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchData("The Beatles");
-  }, []);
-
-  const fetchData = async (search: string, page = 1) => {
+  const fetchData = useCallback(async (search, page = 1) => {
+    setLoading(true);
+    const url = `https://api.discogs.com/database/search?q=${encodeURIComponent(search)}&type=artist&key=${process.env.REACT_APP_API_KEY}&secret=${process.env.REACT_APP_API_SECRET}&per_page=5&page=${page}`;
     try {
-      setLoading(true);
-      const url = `https://api.discogs.com/database/search?q=${search}&type=${type}&key=${process.env.REACT_APP_API_KEY}&secret=${process.env.REACT_APP_API_SECRET}&per_page=5&page=${page}`;
       const response = await fetch(url);
       const data = await response.json();
-
       setResults(data.results);
       setPagination({
         page: data.pagination.page,
         pages: data.pagination.pages,
-        itemsPerPage: data.pagination.itemsPerPage,
+        itemsPerPage: data.pagination.perPage,
         totalItems: data.pagination.totalItems,
       });
-      setLoading(false);
-    } catch (err: any) {
+    } catch (err) {
       console.error("Fetching error:", err);
-      alert("Failed to fetch data: " + err.message);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, []);
 
-    console.log(process.env.REACT_APP_API_KEY);
+  useEffect(() => {
+    fetchData(searchTerm, pagination.page);
+  }, [searchTerm, pagination.page, fetchData]);
 
-  const value: DiscogsContextType = {
+  const value = {
     results,
-    setResults,
-    item,
-    setItem,
     pagination,
-    setPagination,
     fetchData,
     loading,
-    setLoading,
-    type,
-    setType,
+    searchTerm,
+    setSearchTerm,
   };
 
   return (
     <DiscogsListContext.Provider value={value}>
-      {/* @ts-except-error */}
-      {props.children}
+      {children}
     </DiscogsListContext.Provider>
   );
 };

@@ -2,18 +2,18 @@ import React from "react";
 import { Box, Image, Text, useColorModeValue, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 
-interface InfoCardProps {
-  artist: {
-    id: number;
-    title: string;
-    thumb: string;
-    cover_image: string;
-    resource_url: string;
-    uri: string;
-  };
-}
+// interface InfoCardProps {
+//   artist: {
+//     id: number;
+//     title: string;
+//     thumb: string;
+//     cover_image: string;
+//     resource_url: string;
+//     uri: string;
+//   };
+// }
 
-const InfoCard: React.FC<InfoCardProps> = ({ artist }) => {
+const InfoCard: React.FC<any> = ({ artist }) => {
   const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.200");
 

@@ -5,16 +5,23 @@ interface Track {
 }
 
 interface ReleaseData {
+  tracks: any;
+  stats: any;
+  format: any;
+  label: any;
+  year: any;
   title: string;
-  tracklist: Track[];  
+  tracklist: Track[];
   community: {
-     
-  have: number; 
-  } 
-  };
+    have: number;
+    want: number; 
+    own: number;  
+  }
+}
 
 interface ReleaseDetailsProps {
   title: string;
   tracks: Track[];
   ownedBy: number;
+  wantedBy: number; 
 }
