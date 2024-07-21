@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-extraneous-dependencies */
 import path from "path";
 import { fileURLToPath } from "url";
 import bundleAnalyzer from "@next/bundle-analyzer";
@@ -8,16 +10,12 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
-
-module.exports = withBundleAnalyzer({
+export default withBundleAnalyzer({
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
-  basePath: baseURL,
-  assetPrefix: `${baseURL}/`, 
   images: {
-    domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN || 'default-domain.com'],
+    domains: [process.env.NEXT_PUBLIC_BASE_URL],
   },
   webpack: (config) => {
     config.resolve.alias = {
@@ -30,5 +28,5 @@ module.exports = withBundleAnalyzer({
     REACT_APP_API_KEY: process.env.REACT_APP_API_KEY,
     REACT_APP_API_SECRET: process.env.REACT_APP_API_SECRET,
   },
-  output: "standalone", // If you are using Docker or similar for your production environment
+  output:'export',
 });
