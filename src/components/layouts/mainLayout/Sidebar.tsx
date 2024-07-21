@@ -112,7 +112,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
       bg={bg}
       borderRight="1px"
       borderRightColor={borderColor}
-      w={{ base: "full", md: 60 }}  // Adjust width responsively
+      w={{ base: "full", md: 80 }}  // Adjust width responsively
       pos="fixed"
       zIndex={200}
       h="full"

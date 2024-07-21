@@ -73,7 +73,6 @@ const SearchBar: React.FC = () => {
           )}
         </InputRightElement>
       </InputGroup>
-      {/* {loading && <Box textAlign="center">Loading...</Box>} */}
     </Box>
   );
 };

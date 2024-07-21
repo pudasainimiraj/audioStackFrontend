@@ -1,13 +1,14 @@
 import React, { useContext, useRef } from "react";
 import GenericCard from "@/components/cardComponent/genericCard";
 import { DiscogsListContext } from "@/hooks/useDiscogProvider";
-import { Box, SimpleGrid, Spinner, Text, Button, Flex, HStack, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Spinner, Text, Button, Flex, HStack, useBreakpointValue, List, ListItem, useColorModeValue } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const ArtistsList = () => {
   const context = useContext(DiscogsListContext);
   const scrollRef = useRef(null);
   const showFullPagination = useBreakpointValue({ base: false, md: true });
+  const bgColor = useColorModeValue("white", "gray.800");
 
   if (!context) {
     return (
@@ -46,22 +47,23 @@ const ArtistsList = () => {
 
   return (
     <Box padding={4}>
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="20px">
+      <List display="flex" flexWrap="wrap" justifyContent="center" spacing="20px">
       {results.map((artist) => (
-        <Box
+        <ListItem
           key={artist.id}
           minW={{ base: "150px", sm: "250px" }}
           maxW="300px"
           height="300px"
-          bg="white"
+          bg={bgColor}
           boxShadow="sm"
           borderRadius="md"
           overflow="hidden"
+          m="10px"
         >
           <GenericCard artist={artist} />
-        </Box>
+        </ListItem>
       ))}
-    </SimpleGrid>
+    </List>
 
        <Flex
       justifyContent="center"

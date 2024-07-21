@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import ReleaseDetails from "@/components/cardComponent/releaseCard";  // Ensure the path is correct
+import ReleaseDetails from "@/components/cardComponent/releaseCard";
 
 const ReleaseDetail = () => {
   const router = useRouter();
@@ -26,9 +26,6 @@ useEffect(() => {
   }
 }, [releaseId]);
 
-  // console.log(process.env.REACT_APP_API_KEY);
-
-  console.log("Release DAta", releaseData)
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;

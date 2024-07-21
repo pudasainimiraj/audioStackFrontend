@@ -1,4 +1,4 @@
-import ArtistsList from "./queryListComponent";
+import ArtistsList from "./artistListComponent";
 import { Box } from "@chakra-ui/react";
 
 const Landing = () => {
