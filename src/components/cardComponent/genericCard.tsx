@@ -11,7 +11,7 @@ const InfoCard: React.FC<any> = ({ artist }) => {
                     ? artist.cover_image 
                     : (artist.thumb && artist.thumb !== "https://st.discogs.com/2d53d5c6d93b64024a1bd3d995bf6b340467809f/images/spacer.gif" 
                     ? artist.thumb 
-                    : "https://via.placeholder.com/150?text=Image+Not+Available");
+                    : "https://via.placeholder.com/150?text=Thumbnail+Not+Available");
 
   return (
     <Link href={`/release?releaseId=${artist.id}`} passHref>
