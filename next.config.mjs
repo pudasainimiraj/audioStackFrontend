@@ -1,21 +1,23 @@
-// next.config.js or next.config.mjs
-
 import path from "path";
 import { fileURLToPath } from "url";
 import bundleAnalyzer from "@next/bundle-analyzer";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));  // Correct way to handle __dirname in ESM
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-export default withBundleAnalyzer({
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   poweredByHeader: false,
   trailingSlash: false,
+  basePath: baseURL,
+  assetPrefix: `${baseURL}/`, 
   images: {
-    domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN || 'default-domain.com'],  // Default domain if env var is not set
+    domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN || 'default-domain.com'],
   },
   webpack: (config) => {
     config.resolve.alias = {
@@ -28,5 +30,5 @@ export default withBundleAnalyzer({
     REACT_APP_API_KEY: process.env.REACT_APP_API_KEY,
     REACT_APP_API_SECRET: process.env.REACT_APP_API_SECRET,
   },
-  output: "standalone",  // Assuming you meant to use 'standalone' or 'server' depending on your deployment strategy
+  output: "standalone", // If you are using Docker or similar for your production environment
 });
