@@ -1,43 +1,29 @@
 import React from "react";
-import { Box, Drawer, DrawerContent, useDisclosure } from "@chakra-ui/react";
+import { Box, Drawer, DrawerContent, useDisclosure, useBreakpointValue } from "@chakra-ui/react";
 import Sidebar from "@/components/layouts/mainLayout/Sidebar";
 import Header from "@/components/layouts/mainLayout/Header";
 
-/**
- * @component MainLayout exports a Box Component for the MainLayout with a sidebar and header
- * @param children - The child component that gets displayed
- * @returns {ReactElement} MainLayout component
- */
 const MainLayout = ({ children, isReadOnly = false }) => {
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const isDrawer = useBreakpointValue({ base: true, md: false });
+
   return (
-    <Box>
-      <Header onOpen={() => console.log("Opened")} isReadOnly={isReadOnly} />
-      <Box
-        position="fixed"
-        left={0}
-        top={0}
-        right={0}
-        zIndex={20} // Ensures the header is above other content
-      >
-        <Sidebar onClose={() => onClose} isReadOnly={isReadOnly} />
-      </Box>
-      <Box ml={{ base: 0, md: 60 }} p="4" marginTop="20px">
+    <Box minH="100vh">
+      <Header onOpen={onOpen} />
+      {isDrawer ? (
+        <Drawer autoFocus={false} isOpen={isOpen} placement="left" onClose={onClose} returnFocusOnClose={false} onOverlayClick={onClose} size="full">
+          <DrawerContent>
+            <Sidebar onClose={onClose} isReadOnly={isReadOnly} />
+          </DrawerContent>
+        </Drawer>
+      ) : (
+        <Box position="fixed" left={0} top={0} w="60" zIndex={20}>
+          <Sidebar onClose={() => {}} isReadOnly={isReadOnly} />
+        </Box>
+      )}
+      <Box ml={{ base: 0, md: "60" }} pt={{ base: "60px", md: "0" }} p="4">
         {children}
       </Box>
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <Sidebar onClose={onClose} isReadOnly={isReadOnly} />
-        </DrawerContent>
-      </Drawer>
     </Box>
   );
 };

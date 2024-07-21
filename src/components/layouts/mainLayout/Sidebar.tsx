@@ -16,7 +16,6 @@ import {
 } from "react-icons/fi";
 import { useRouter } from "next/router";
 import NavItem from "@/components/layouts/mainLayout/NavItem";
-// import capitalize from "@frontend/src/editor/settings/utils/capitalize";
 
 /**
  * @typedef LinkItemProps
@@ -98,34 +97,37 @@ const RenderNavItem = (link: LinkItemProps) => {
   );
 };
 
+  
+
 /**
  *@component Sidebar component
  * @returns {ReactElement} Sidebar component
  */
-const Sidebar: React.FC<SidebarProps>  = ({ onClose}): React.JSX.Element => (
-  <Box
-    
-    transition="3s ease"
-    bg={useColorModeValue("white", "gray.900")}
-    borderRight="1px"
-    borderRightColor={useColorModeValue("gray.200", "gray.700")}
-    w={{ base: "full", md: 60 }}
-    pos="fixed"
-    zIndex={200}
-    h="full"
-  >
-    <Flex
-      h="20"
-      alignItems="center"
-      mx="8"
-      justifyContent="space-between"
-      mt={50}
-      mb={[25, 50, 100]}
-      fontSize={["4xl", "4xl", "2xl", "3xl", "4xl"]}
-      alignSelf="center"
-      letterSpacing="tight"
+const Sidebar: React.FC<SidebarProps> = ({ onClose }) => { 
+
+  const bg = useColorModeValue("white", "gray.900");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+
+  return ( <Box
+      bg={bg}
+      borderRight="1px"
+      borderRightColor={borderColor}
+      w={{ base: "full", md: 60 }}  // Adjust width responsively
+      pos="fixed"
       zIndex={200}
+      h="full"
+      transition="3s ease"
     >
+      <Flex
+        h="20"
+        alignItems="center"
+        mx="8"
+        justifyContent="space-between"
+        mt="50"
+        mb={{ base: 25, md: 50 }}  // Responsive margin
+        fontSize={{ base: "2xl", md: "3xl" }}  // Responsive font size
+        letterSpacing="tight"
+      >
       <Image
         boxSize="120px"
         src="https://via.placeholder.com/150"
@@ -135,7 +137,8 @@ const Sidebar: React.FC<SidebarProps>  = ({ onClose}): React.JSX.Element => (
       <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
     </Flex>
     {LinkItems.map((link) => RenderNavItem(link))}
-  </Box>
-);
+  </Box>);
+
+}
 
 export default Sidebar;

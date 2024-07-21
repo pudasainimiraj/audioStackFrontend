@@ -1,21 +1,12 @@
 import React from "react";
 import { AppProps } from "next/app";
-import { ChakraProvider, CSSReset, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import CookieConsent from "react-cookie-consent";
 import { DiscogsProvider } from "@/hooks/useDiscogProvider";
 import MainLayout from "@/components/layouts/MainLayout";
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      // Global styles for a consistent look
-      body: {
-        color: 'gray.800',
-        bg: 'gray.50',
-      }
-    }
-  }
-});
+import { theme } from "@/theme/theme";
+
 
 const App = ({ Component, pageProps }: AppProps) => (
   <ChakraProvider theme={theme}>

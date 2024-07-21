@@ -2,17 +2,6 @@ import React from "react";
 import { Box, Image, Text, useColorModeValue, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 
-// interface InfoCardProps {
-//   artist: {
-//     id: number;
-//     title: string;
-//     thumb: string;
-//     cover_image: string;
-//     resource_url: string;
-//     uri: string;
-//   };
-// }
-
 const InfoCard: React.FC<any> = ({ artist }) => {
   const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.200");
@@ -20,8 +9,8 @@ const InfoCard: React.FC<any> = ({ artist }) => {
   return (
     <Link href={`/release?releaseId=${artist.id}`} passHref>
       <Flex
-        as="a" // Ensures the Flex component acts as an anchor tag
-        width="250px"
+        as="a"
+        width={{ base: "100%", sm: "100%", md: "250px" }} 
         height="300px"
         borderWidth="1px"
         borderRadius="lg"
@@ -37,17 +26,13 @@ const InfoCard: React.FC<any> = ({ artist }) => {
         justify="center"
       >
         <Image
-          src={
-            artist.cover_image ||
-            artist.thumb ||
-            "https://via.placeholder.com/150"
-          }
+          src={artist.cover_image || artist.thumb || "https://via.placeholder.com/150"}
           alt={`Image for ${artist.title}`}
           objectFit="cover"
           width="100%"
           height="60%"
         />
-        <Box p="4" width="100%" height="30%">
+        <Box p="4" width="100%" height="40%">
           <Text fontSize="lg" fontWeight="bold" isTruncated>
             {artist.title}
           </Text>

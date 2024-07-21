@@ -4,7 +4,17 @@ import ArtistsList from "@/components/queryListComponent";
 
 const Landing = () => {
   return (
-      <Box textAlign="center" mt={3} p={5} overflow="hidden" height="92vh" display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+    <Box
+      textAlign="center"
+      mt={{ base: 2, md: 3 }} // More margin-top on larger screens
+      p={{ base: 3, md: 5 }} // Responsive padding
+      overflow="hidden"
+      height={{ base: "auto", md: "92vh" }} // Full height on larger screens, auto on smaller devices
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+    >
       <ArtistsList />
     </Box>
   );
