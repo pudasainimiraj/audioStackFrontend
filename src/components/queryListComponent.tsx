@@ -19,6 +19,8 @@ const ArtistsList = () => {
 
   const { results, loading, pagination, fetchData, searchTerm } = context;
 
+  console.log(results);
+
   const handlePageChange = (page) => {
     fetchData(searchTerm, page);
   };

@@ -6,6 +6,13 @@ const InfoCard: React.FC<any> = ({ artist }) => {
   const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.600", "gray.200");
 
+  // Determine the image source with fallbacks for empty strings
+  const imageSrc = artist.cover_image && artist.cover_image !== "https://st.discogs.com/2d53d5c6d93b64024a1bd3d995bf6b340467809f/images/spacer.gif" 
+                    ? artist.cover_image 
+                    : (artist.thumb && artist.thumb !== "https://st.discogs.com/2d53d5c6d93b64024a1bd3d995bf6b340467809f/images/spacer.gif" 
+                    ? artist.thumb 
+                    : "https://via.placeholder.com/150?text=Image+Not+Available");
+
   return (
     <Link href={`/release?releaseId=${artist.id}`} passHref>
       <Flex
@@ -26,11 +33,9 @@ const InfoCard: React.FC<any> = ({ artist }) => {
         justify="center"
       >
         <Image
-          src={artist.cover_image || artist.thumb || "https://via.placeholder.com/150"}
+          src={imageSrc}
           alt={`Image for ${artist.title}`}
           objectFit="cover"
-          maxHeight="inherit"
-          maxWidth="inherit"
           width="100%"
           height="60%"
         />
