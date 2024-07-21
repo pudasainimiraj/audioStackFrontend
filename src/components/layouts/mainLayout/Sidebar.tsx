@@ -104,6 +104,7 @@ const RenderNavItem = (link: LinkItemProps) => {
  */
 const Sidebar: React.FC<SidebarProps>  = ({ onClose}): React.JSX.Element => (
   <Box
+    
     transition="3s ease"
     bg={useColorModeValue("white", "gray.900")}
     borderRight="1px"

@@ -53,9 +53,9 @@ const ArtistsList = () => {
 
   return (
     <Box>
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={5} p={5} paddingTop={15}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={5} p={5} paddingTop={15} height="auto" overflow="visible">
         {results.map((artist) => (
-          <Box key={artist.id} onClick={() => console.log(artist.id)} cursor="pointer" width="250px" height="350px" overflow="hidden">
+          <Box key={artist.id} onClick={() => console.log(artist.id)} cursor="pointer" width="250px" height="300px" overflow="hidden">
             <GenericCard artist={artist} />
           </Box>
         ))}

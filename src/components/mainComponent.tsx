@@ -1,14 +1,13 @@
-import { QueryClient, QueryClientProvider } from "react-query";
 import ArtistsList from "./queryListComponent";
-// import MainLayout from "./layouts/MainLayout";
+import { Box } from "@chakra-ui/react";
 
 const Landing = () => {
-  const queryClient = new QueryClient();
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ArtistsList />
-      </QueryClientProvider>
+        <Box textAlign="center" p={5}>
+       <ArtistsList />
+      </Box>
+        
     </>
   );
 };

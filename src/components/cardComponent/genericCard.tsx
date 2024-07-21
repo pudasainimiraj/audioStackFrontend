@@ -22,7 +22,7 @@ const InfoCard: React.FC<any> = ({ artist }) => {
       <Flex
         as="a" // Ensures the Flex component acts as an anchor tag
         width="250px"
-        height="350px"
+        height="300px"
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
@@ -47,7 +47,7 @@ const InfoCard: React.FC<any> = ({ artist }) => {
           width="100%"
           height="60%"
         />
-        <Box p="4" width="100%" height="40%">
+        <Box p="4" width="100%" height="30%">
           <Text fontSize="lg" fontWeight="bold" isTruncated>
             {artist.title}
           </Text>
