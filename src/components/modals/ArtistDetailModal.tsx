@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -8,8 +8,8 @@ import {
   ModalBody,
   Text,
   Image,
-  Box
-} from '@chakra-ui/react';
+  Box,
+} from "@chakra-ui/react";
 
 interface ArtistDetailsModalProps {
   isOpen: boolean;
@@ -18,16 +18,17 @@ interface ArtistDetailsModalProps {
     title: string;
     cover_image: string;
     thumb: string;
-    description?: string;  // Assuming you might have a description field in some cases
-  }
+    description?: string; // Assuming you might have a description field in some cases
+  };
 }
 
 const ArtistDetailsModal: React.FC<ArtistDetailsModalProps> = ({
   isOpen,
   onClose,
-  artist
+  artist,
 }) => {
-  const imageUrl = artist.cover_image || artist.thumb || "https://via.placeholder.com/150"; // Fallback image URL
+  const imageUrl =
+    artist.cover_image || artist.thumb || "https://via.placeholder.com/150"; // Fallback image URL
   const defaultDescription = "No additional information available."; // Default description if none provided
 
   return (
@@ -38,9 +39,9 @@ const ArtistDetailsModal: React.FC<ArtistDetailsModalProps> = ({
         <ModalCloseButton />
         <ModalBody>
           <Box textAlign="center" mb={4}>
-            <Image 
-              src={imageUrl} 
-              alt={`Image of ${artist.title}`} 
+            <Image
+              src={imageUrl}
+              alt={`Image of ${artist.title}`}
               fallbackSrc="https://via.placeholder.com/150" // Fallback src if image fails to load
             />
           </Box>

@@ -12,8 +12,8 @@ const MainLayout = ({ children, isReadOnly = false }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box>
-      <Header onOpen={() => console.log('Opened')} isReadOnly={isReadOnly} />
-       <Box
+      <Header onOpen={() => console.log("Opened")} isReadOnly={isReadOnly} />
+      <Box
         position="fixed"
         left={0}
         top={0}

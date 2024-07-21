@@ -1,4 +1,4 @@
-import React, { useState, useContext, KeyboardEvent, ChangeEvent } from 'react';
+import React, { useState, useContext, KeyboardEvent, ChangeEvent } from "react";
 import {
   InputGroup,
   InputLeftElement,
@@ -8,19 +8,21 @@ import {
 } from "@chakra-ui/react";
 import { FiSearch, FiX } from "react-icons/fi";
 import { CustomIconButton } from "@/components/buttons/buttons";
-import { DiscogsListContext } from '@/hooks/useDiscogProvider'; // Adjust the import path as necessary
+import { DiscogsListContext } from "@/hooks/useDiscogProvider"; // Adjust the import path as necessary
 
 const SearchBar: React.FC = () => {
   const { fetchData, loading } = useContext(DiscogsListContext);
   const [inputValue, setInputValue] = useState("");
 
-  const handleSearch = async (event: KeyboardEvent<HTMLTextAreaElement>): void => {
+  const handleSearch = async (
+    event: KeyboardEvent<HTMLTextAreaElement>
+  ): void => {
     if (event.key === "Enter") {
       event.preventDefault();
       const cleanQuery = inputValue.trim();
       if (cleanQuery) {
-        await fetchData(cleanQuery);  // Await the async operation
-        setInputValue("");            // Clear the input after the search is done
+        await fetchData(cleanQuery); // Await the async operation
+        setInputValue(""); // Clear the input after the search is done
       }
     }
   };

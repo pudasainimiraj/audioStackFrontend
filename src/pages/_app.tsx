@@ -13,22 +13,21 @@ const App = ({ Component, pageProps }: AppProps) => (
       <CSSReset />
       <MainLayout>
         <Component {...pageProps} />
-        </MainLayout>
-            <CookieConsent
-              location="bottom"
-              buttonText="I Understand"
-              cookieName="myAppCookieConsent"
-              style={{ background: "#2B373B" }}
-              buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-              expires={150}
-            >
-              This website uses only essential cookies to enhance the user
-              experience.{" "}
-              <span style={{ color: "#4e503b" }}>
-                <a href="/cookie-policy.pdf">Learn more</a>
-              </span>
+      </MainLayout>
+      <CookieConsent
+        location="bottom"
+        buttonText="I Understand"
+        cookieName="myAppCookieConsent"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        expires={150}
+      >
+        This website uses only essential cookies to enhance the user experience.{" "}
+        <span style={{ color: "#4e503b" }}>
+          <a href="/cookie-policy.pdf">Learn more</a>
+        </span>
       </CookieConsent>
-      </DiscogsProvider>
+    </DiscogsProvider>
   </ChakraProvider>
 );
 

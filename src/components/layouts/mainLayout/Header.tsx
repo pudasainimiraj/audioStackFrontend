@@ -64,7 +64,6 @@ const Header = ({ onOpen, isReadOnly }: HeaderProps) => {
             {isReadOnly ? null : (
               <Button
                 fontSize="xl"
-
                 as="a"
                 ml={16}
                 cursor={"pointer"}

@@ -1,7 +1,8 @@
-// next.config.js updated without unsupported output property
-import path from 'path';
-import { fileURLToPath } from 'url';
-import bundleAnalyzer from '@next/bundle-analyzer';
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-extraneous-dependencies */
+import path from "path";
+import { fileURLToPath } from "url";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

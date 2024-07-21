@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import Head from 'next/head';
-import ReleaseDetails from '@/components/cardComponent/releaseCard';  // Make sure the import is correct
-
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Head from "next/head";
+import ReleaseDetails from "@/components/cardComponent/releaseCard";  // Ensure the path is correct
 
 const ReleaseDetail = () => {
   const router = useRouter();
   const { releaseId } = router.query;
-  const [releaseData, setReleaseData] = useState(null);
+  const [releaseData, setReleaseData] = useState<ReleaseData | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (releaseId) {
       setLoading(true);
-      axios.get(`https://api.discogs.com/releases/${releaseId}`)
+      axios.get<ReleaseData>(`https://api.discogs.com/releases/${releaseId}`)
         .then(response => {
           setReleaseData(response.data);
           setLoading(false);
@@ -34,7 +33,7 @@ const ReleaseDetail = () => {
   return (
     <div>
       <Head>
-        <title>{releaseData ? releaseData.title : 'Loading...'}</title>
+        <title>{releaseData ? releaseData.title : "Loading..."}</title>
       </Head>
       {releaseData && (
         <ReleaseDetails

@@ -52,7 +52,7 @@ const LinkItems: Array<LinkItemProps> = [
     linkTo: LinkItemsNames.Home,
   },
   {
-    name:LinkItemsNames.Editor,
+    name: LinkItemsNames.Editor,
     icon: FiBarChart,
     linkTo: LinkItemsNames.Editor,
   },
@@ -78,6 +78,10 @@ const LinkItems: Array<LinkItemProps> = [
  * @property {() => void} onClose - Function to close the sidebar
  * Type for the SidebarProps
  */
+type SidebarProps = {
+  onClose: () => void;
+  isReadOnly?: boolean;
+};
 
 const RenderNavItem = (link: LinkItemProps, isDisabled = true) => {
   const router = useRouter();
@@ -98,7 +102,7 @@ const RenderNavItem = (link: LinkItemProps, isDisabled = true) => {
  *@component Sidebar component
  * @returns {ReactElement} Sidebar component
  */
-const Sidebar = ({ onClose , isReadOnly = false }): React.JSX.Element => (
+const Sidebar: React.FC<SidebarProps>  = ({ onClose, isReadOnly = false }): React.JSX.Element => (
   <Box
     transition="3s ease"
     bg={useColorModeValue("white", "gray.900")}
@@ -121,10 +125,10 @@ const Sidebar = ({ onClose , isReadOnly = false }): React.JSX.Element => (
       letterSpacing="tight"
       zIndex={200}
     >
-      <Image 
-        boxSize="120px" 
-        src="https://via.placeholder.com/150" 
-        alt="user-logo" 
+      <Image
+        boxSize="120px"
+        src="https://via.placeholder.com/150"
+        alt="user-logo"
         borderRadius="full" // This makes the image circular
       />
       <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Image, Text, useColorModeValue, Flex } from '@chakra-ui/react';
-import Link from 'next/link'; 
+import React from "react";
+import { Box, Image, Text, useColorModeValue, Flex } from "@chakra-ui/react";
+import Link from "next/link";
 
 interface InfoCardProps {
   artist: {
@@ -14,8 +14,8 @@ interface InfoCardProps {
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ artist }) => {
-  const bgColor = useColorModeValue('white', 'gray.800');
-  const textColor = useColorModeValue('gray.600', 'gray.200');
+  const bgColor = useColorModeValue("white", "gray.800");
+  const textColor = useColorModeValue("gray.600", "gray.200");
 
   return (
     <Link href={`/release?releaseId=${artist.id}`} passHref>
@@ -30,14 +30,18 @@ const InfoCard: React.FC<InfoCardProps> = ({ artist }) => {
         bg={bgColor}
         boxShadow="md"
         transition="0.3s"
-        _hover={{ transform: 'scale(1.05)', boxShadow: 'lg' }}
+        _hover={{ transform: "scale(1.05)", boxShadow: "lg" }}
         direction="column"
         cursor="pointer"
         align="center"
         justify="center"
       >
         <Image
-          src={artist.cover_image || artist.thumb || 'https://via.placeholder.com/150'}
+          src={
+            artist.cover_image ||
+            artist.thumb ||
+            "https://via.placeholder.com/150"
+          }
           alt={`Image for ${artist.title}`}
           objectFit="cover"
           width="100%"
@@ -48,7 +52,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ artist }) => {
             {artist.title}
           </Text>
           <Text fontSize="md" color={textColor} isTruncated>
-            {artist.title || 'Unknown Artist'}
+            {artist.title || "Unknown Artist"}
           </Text>
         </Box>
       </Flex>
