@@ -1,7 +1,7 @@
 # My Awesome App
 
 ## Overview
-My Awesome App is a web application that provides users with comprehensive discography data and enables efficient searching and browsing through a clean and intuitive interface. The app leverages the power of Chakra UI for a polished and professional user experience.
+AudioStackFrontend is a web application that provides users with comprehensive discography data and enables efficient searching and browsing through a clean and intuitive interface. The app leverages the power of Chakra UI for a polished and professional user experience.
 
 ## Features
 - **Search Functionality**: Quickly find specific releases or artists.
