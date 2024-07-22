@@ -22,7 +22,10 @@ My Awesome App is a web application that provides users with comprehensive disco
 - **Chakra UI**: For a sleek and professional design.
 - **Next.js**: For server-side rendering and optimized performance.
 
-## Getting Started
+### Find the deployed version
+The deployed version of the app can be found at https://pudasainimiraj.github.io/audioStackFrontend/ . 
+
+## Getting Started Locally
 
 ### Prerequisites
 - **Node.js**: Ensure you have Node.js installed. You can download it from [nodejs.org](https://nodejs.org/).
@@ -30,8 +33,8 @@ My Awesome App is a web application that provides users with comprehensive disco
 ### Installation
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/pudasainimiraj/audioStackFrontend.git
+    cd audioStackFrontend
     ```
 
 2. **Install dependencies**:
@@ -46,13 +49,12 @@ npm run dev
 This will start the development server and you can view the app by navigating to http://localhost:3000 in your browser.
 ```
 
-## Find the deployed version
-The deployed version of the app can be found at https://pudasainimiraj.github.io/audioStackFrontend/ . 
-
 ## Project Structure
 src/components: Contains all the React components used in the app.
 buttons: Button components.
 cardComponent: Components for displaying release cards.
+    - genericCard : Card Component used to render the list of queried artist.
+    - releaseCard : Card Component used to render the release page with the release details. 
 layouts: Layout components such as Header and Sidebar.
 mainComponent.tsx: Main component of the app.
 modals: Modal components (e.g., ArtistDetailModal).
