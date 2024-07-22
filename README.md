@@ -1,4 +1,4 @@
-# My Awesome App
+# AudioStackFrontend
 
 ## Overview
 AudioStackFrontend is a web application that provides users with comprehensive discography data and enables efficient searching and browsing through a clean and intuitive interface. The app leverages the power of Chakra UI for a polished and professional user experience.
